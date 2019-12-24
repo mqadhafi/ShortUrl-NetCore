@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>ShortUrl.Data</AssemblyName>
+    <RootNamespace>ShortUrl.Data</RootNamespace>
   </PropertyGroup>
 
 </Project>

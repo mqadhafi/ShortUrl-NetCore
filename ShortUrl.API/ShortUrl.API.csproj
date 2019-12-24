@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShortUrl.Business\ShortUrl.Business.csproj" />
-    <ProjectReference Include="..\ShortUrl.Persistence\ShortUrl.Persistence.csproj" />
+    <ProjectReference Include="..\ShortUrl.Persistence\ShortUrl.Data.csproj" />
   </ItemGroup>
 
 </Project>
