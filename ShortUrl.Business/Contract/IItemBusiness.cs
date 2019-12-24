@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using ShortUrl.Business.Models;
+using ShortUrl.Business.Models.Item;
 
 namespace ShortUrl.Business.Contract
 {
     public interface IItemBusiness
     {
-        Task<Response> GenerateAsync(ItemModel model);
+        Task<ItemResponse> GenerateAsync(ItemRequest model);
     }
 }

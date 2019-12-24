@@ -5,9 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShortUrl.Command\ShortUrl.Command.csproj" />
+    <PackageReference Include="Dapper" Version="2.0.30" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ShortUrl.Domain\ShortUrl.Domain.csproj" />
-    <ProjectReference Include="..\ShortUrl.Query\ShortUrl.Query.csproj" />
   </ItemGroup>
 
 </Project>

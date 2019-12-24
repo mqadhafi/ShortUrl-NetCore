@@ -18,7 +18,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShortUrl.Business\ShortUrl.Business.csproj" />
-    <ProjectReference Include="..\ShortUrl.Data\ShortUrl.Data.csproj" />
+    <ProjectReference Include="..\ShortUrl.Command\ShortUrl.Command.csproj" />
+    <ProjectReference Include="..\ShortUrl.Domain\ShortUrl.Domain.csproj" />
+    <ProjectReference Include="..\ShortUrl.Query\ShortUrl.Query.csproj" />
   </ItemGroup>
 
 </Project>

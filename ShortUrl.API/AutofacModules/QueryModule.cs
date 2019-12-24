@@ -3,13 +3,13 @@ using Autofac;
 
 namespace ShortUrl.API.AutofacModules
 {
-    public class CommandModule : Module
+    public class QueryModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            // register command handlers
-            builder.RegisterAssemblyTypes(System.Reflection.Assembly.Load($"{Startup.Namespace}.Command"))
-                .Where(type => type.Name.EndsWith("CommandHandler"))
+            // register query handlers
+            builder.RegisterAssemblyTypes(System.Reflection.Assembly.Load($"{Startup.Namespace}.Query"))
+                .Where(type => type.Name.EndsWith("QueryHandler"))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
         }

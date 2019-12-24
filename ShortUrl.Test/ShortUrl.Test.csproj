@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShortUrl.Business\ShortUrl.Business.csproj" />
-    <ProjectReference Include="..\ShortUrl.Data\ShortUrl.Data.csproj" />
+    <ProjectReference Include="..\ShortUrl.Domain\ShortUrl.Domain.csproj" />
   </ItemGroup>
 
 </Project>

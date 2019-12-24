@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ShortUrl.Business.Contract;
-using ShortUrl.Business.Models;
+using ShortUrl.Business.Models.Item;
 
 namespace ShortUrl.API.Controllers
 {
@@ -22,12 +22,12 @@ namespace ShortUrl.API.Controllers
 
         #region Public Methods
         [HttpPost("generators")]
-        public async Task<IActionResult> Post(ItemModel model)
+        public async Task<IActionResult> Post(ItemRequest model)
         {
-            Response response = await _itemBusiness.GenerateAsync(model);
+            ItemResponse response = await _itemBusiness.GenerateAsync(model);
 
             if (response.IsSuccess)
-                return Ok();
+                return Ok(new Uri(Request.Scheme + "://" + Request.Host.Value + Request.PathBase + "/" + response.Segment).ToString());
 
             return BadRequest(response.Message);
         }

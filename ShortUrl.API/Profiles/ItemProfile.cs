@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using ShortUrl.Data.Commands.Models.Item;
-using ShortUrl.Data.Entities;
+using ShortUrl.Commands.Models;
+using ShortUrl.Domain.Entities;
 
 namespace ShortUrl.API.Profiles
 {

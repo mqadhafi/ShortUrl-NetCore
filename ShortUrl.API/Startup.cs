@@ -36,6 +36,7 @@ namespace ShortUrl.API
             // You must have the call to AddAutofac in the Program.Main
             // method or this won't be called.
             builder.RegisterModule<CommandModule>();
+            builder.RegisterModule<QueryModule>();
             builder.RegisterModule<BusinessModule>();
         }
 
