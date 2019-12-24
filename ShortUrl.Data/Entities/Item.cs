@@ -6,6 +6,6 @@ namespace ShortUrl.Data.Entities
     {
         public string OriginUrl { get; set; }
         public string Segment { get; set; }
-        public DateTimeOffset ExpiredDate { get; set; }
+        public DateTimeOffset? ExpiredDate { get; set; }
     }
 }
