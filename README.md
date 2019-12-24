@@ -1,2 +1,2 @@
 # ShortUrl
-Simple short url generator
+Simple short url generator with .NET Core
