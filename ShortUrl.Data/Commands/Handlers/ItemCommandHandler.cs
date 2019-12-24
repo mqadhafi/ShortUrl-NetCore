@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using ShortUrl.Data.Commands.Handlers.Contract;
-using ShortUrl.Data.Commands.Models;
 using ShortUrl.Data.Commands.Models.Item;
 using ShortUrl.Data.Context;
 using ShortUrl.Data.Entities;
@@ -30,28 +29,16 @@ namespace ShortUrl.Data.Commands.Handlers
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public async Task<Response> ExecuteAsync(CreateItemCommand command)
+        public async Task ExecuteAsync(CreateItemCommand command)
         {
-            var response = new Response();
-            try
-            {
-                // map object
-                Item entity = _mapper.Map<CreateItemCommand, Item>(command);
+            // map object
+            Item entity = _mapper.Map<CreateItemCommand, Item>(command);
 
-                // entity added
-                _dbContext.Set<Item>().Add(entity);
+            // entity added
+            _dbContext.Set<Item>().Add(entity);
 
-                // commit changes
-                await _dbContext.SaveChangesAsync().ConfigureAwait(false);
-
-                response.IsSuccess = true;
-            }
-            catch (Exception exception)
-            {
-                response.IsSuccess = false;
-                response.Message = exception.Message;
-            }
-            return response;
+            // commit changes
+            await _dbContext.SaveChangesAsync();
         }
         #endregion
     }

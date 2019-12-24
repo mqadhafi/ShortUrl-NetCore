@@ -5,6 +5,6 @@ namespace ShortUrl.Data.Commands.Handlers.Contract
 {
     public interface ICommandHandler<TCommand> where TCommand : ICommand
     {
-        Task<Response> ExecuteAsync(TCommand command);
+        Task ExecuteAsync(TCommand command);
     }
 }

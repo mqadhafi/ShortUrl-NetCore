@@ -1,4 +1,4 @@
-﻿namespace ShortUrl.Data.Commands.Models
+﻿namespace ShortUrl.Business.Models
 {
     public abstract class ResponseBase
     {
