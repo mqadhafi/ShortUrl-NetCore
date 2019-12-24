@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShortUrl.API", "ShortUrl.AP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShortUrl.Business", "ShortUrl.Business\ShortUrl.Business.csproj", "{011C95E9-5F2B-47E5-A4A7-513460DA7449}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShortUrl.Data", "ShortUrl.Persistence\ShortUrl.Data.csproj", "{03B54AFE-5932-4153-A6C6-30B0BAA00A05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShortUrl.Data", "ShortUrl.Data\ShortUrl.Data.csproj", "{03B54AFE-5932-4153-A6C6-30B0BAA00A05}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShortUrl.Test", "ShortUrl.Test\ShortUrl.Test.csproj", "{D86B77CE-7E66-4267-B6A3-D5AA3A503F65}"
 EndProject

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShortUrl.Persistence\ShortUrl.Data.csproj" />
+    <ProjectReference Include="..\ShortUrl.Data\ShortUrl.Data.csproj" />
   </ItemGroup>
 
 </Project>
