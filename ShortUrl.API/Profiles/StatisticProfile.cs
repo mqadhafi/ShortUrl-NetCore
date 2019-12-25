@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ShortUrl.Commands.Models;
+using ShortUrl.Command.Models;
 using ShortUrl.Domain.Entities;
 
 namespace ShortUrl.API.Profiles

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using ShortUrl.Commands.Models;
+using ShortUrl.Command.Models;
 
-namespace ShortUrl.Commands.Handlers.Contract
+namespace ShortUrl.Command.Handlers.Contract
 {
     public interface ICommandHandler<TCommand> where TCommand : ICommand
     {

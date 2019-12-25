@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ShortUrl.Commands.Models
+namespace ShortUrl.Command.Models
 {
     public class CreateItemCommand : Command
     {

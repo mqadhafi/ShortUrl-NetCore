@@ -1,6 +1,6 @@
-﻿using ShortUrl.Commands.Models;
+﻿using ShortUrl.Command.Models;
 
-namespace ShortUrl.Commands.Handlers.Contract
+namespace ShortUrl.Command.Handlers.Contract
 {
     public interface IItemCommandHandler :
         ICommandHandler<CreateItemCommand> // create

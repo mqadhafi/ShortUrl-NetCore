@@ -8,7 +8,7 @@ using ShortUrl.Domain.Entities;
 
 namespace ShortUrl.Command.Handlers
 {
-    internal class ItemCommandHandler : IItemCommandHandler
+    internal class StatisticCommandHandler : IStatisticCommandHandler
     {
         #region Private Fields
         private readonly ApplicationContext _dbContext;
@@ -16,26 +16,26 @@ namespace ShortUrl.Command.Handlers
         #endregion
 
         #region Constructor
-        public ItemCommandHandler(ApplicationContext dbContext, IMapper mapper)
+        public StatisticCommandHandler(ApplicationContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
         #endregion
 
-        #region Member of IItemCommandHandler
+        #region Member of IStatisticCommandHandler
         /// <summary>
         /// Create a new entity
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        public async Task ExecuteAsync(CreateItemCommand command)
+        public async Task ExecuteAsync(CreateStatisticCommand command)
         {
             // map object
-            Item entity = _mapper.Map<CreateItemCommand, Item>(command);
+            Statistic entity = _mapper.Map<CreateStatisticCommand, Statistic>(command);
 
             // entity added
-            _dbContext.Set<Item>().Add(entity);
+            _dbContext.Set<Statistic>().Add(entity);
 
             // commit changes
             await _dbContext.SaveChangesAsync();
