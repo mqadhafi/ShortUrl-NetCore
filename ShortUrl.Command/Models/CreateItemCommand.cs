@@ -4,6 +4,7 @@ namespace ShortUrl.Commands.Models
 {
     public class CreateItemCommand : Command
     {
+        public string IpAddress { get; set; }
         public string OriginUrl { get; set; }
         public string Segment { get; set; }
         public DateTimeOffset? ExpiredDate { get; set; }
