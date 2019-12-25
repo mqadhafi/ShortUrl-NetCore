@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using ShortUrl.Business.Contract;
 using ShortUrl.Business.Extensions;
-using ShortUrl.Business.Models.Item;
+using ShortUrl.Business.Models;
 using ShortUrl.Commands.Handlers.Contract;
 using ShortUrl.Commands.Models;
 using ShortUrl.Query.Handlers.Contract;
@@ -25,9 +25,9 @@ namespace ShortUrl.Business
         #endregion
 
         #region Member of IItemBusiness
-        public async Task<ItemResponse> GenerateAsync(ItemRequest model)
+        public async Task<GeneratorResponse> GenerateAsync(GeneratorRequest model)
         {
-            var response = new ItemResponse();
+            var response = new GeneratorResponse();
             try
             {
                 if (model == null)
@@ -43,7 +43,7 @@ namespace ShortUrl.Business
                     return response;
                 }
 
-                string segment = await _itemQueryHandler.IsExistAsync(model.OriginUrl);
+                string segment = await _itemQueryHandler.GetSegmentAsync(model.OriginUrl);
 
                 if (string.IsNullOrWhiteSpace(segment))
                 {
@@ -52,6 +52,7 @@ namespace ShortUrl.Business
 
                     await _itemCommandHandler.ExecuteAsync(new CreateItemCommand
                     {
+                        IpAddress = model.IpAddress,
                         ExpiredDate = model.ExpiredDate,
                         OriginUrl = model.OriginUrl,
                         Segment = segment
@@ -60,6 +61,30 @@ namespace ShortUrl.Business
 
                 response.IsSuccess = true;
                 response.Segment = segment;
+            }
+            catch (Exception exception)
+            {
+                response.IsSuccess = false;
+                response.Message = exception.Message;
+            }
+            return response;
+        }
+
+        public async Task<RedirectResponse> NavigatesAsync(RedirectRequest model)
+        {
+            var response = new RedirectResponse();
+            try
+            {
+                string originUrl = await _itemQueryHandler.GetOriginUrlAsync(model.Segment);
+
+                if (!string.IsNullOrWhiteSpace(originUrl))
+                {
+                    // TODO:
+                    // logging history to the DB
+
+                    response.IsSuccess = true;
+                    response.OriginUrl = originUrl;
+                }
             }
             catch (Exception exception)
             {

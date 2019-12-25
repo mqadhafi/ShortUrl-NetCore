@@ -7,29 +7,32 @@ using ShortUrl.Business.Models;
 namespace ShortUrl.API.Controllers
 {
     [ApiController]
-    [Route("generators")]
-    public class GeneratorsController : ControllerBase
+    [Route("/")]
+    public class NavigationsController : ControllerBase
     {
         #region Private Fields
         private readonly IItemBusiness _itemBusiness;
         #endregion
 
         #region Constructor
-        public GeneratorsController(IItemBusiness itemBusiness)
+        public NavigationsController(IItemBusiness itemBusiness)
         {
             _itemBusiness = itemBusiness ?? throw new ArgumentNullException(nameof(itemBusiness));
         }
         #endregion
 
         #region Public Methods
-        [HttpPost]
-        public async Task<IActionResult> Post(GeneratorRequest model)
+        [HttpGet("{segment}")]
+        public async Task<IActionResult> Get(string segment)
         {
-            model.IpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            GeneratorResponse response = await _itemBusiness.GenerateAsync(model);
+            RedirectResponse response = await _itemBusiness.NavigatesAsync(new RedirectRequest
+            {
+                Segment = segment,
+                IpAddress = HttpContext.Connection.RemoteIpAddress.ToString()
+            });
 
             if (response.IsSuccess)
-                return Ok(new Uri(Request.Scheme + "://" + Request.Host.Value + Request.PathBase + "/" + response.Segment).ToString());
+                return Redirect(response.OriginUrl);
 
             return BadRequest(response.Message);
         }
