@@ -15,7 +15,6 @@ namespace ShortUrl.Domain.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Aircraft entity
             modelBuilder.Entity<Item>(entity =>
             {
                 // Base
@@ -25,6 +24,7 @@ namespace ShortUrl.Domain.Context
                 // Specific
                 entity.Property(x => x.ExpiredDate).HasColumnType("datetimeoffset").HasMaxLength(7);
                 entity.Property(x => x.OriginUrl).HasColumnType("varchar(max)").IsUnicode(false).IsRequired();
+                entity.Property(x => x.IpAddress).HasMaxLength(50).IsUnicode(false).IsRequired();
                 entity.Property(x => x.Segment).HasMaxLength(50).IsUnicode(false).IsRequired();
             });
 
