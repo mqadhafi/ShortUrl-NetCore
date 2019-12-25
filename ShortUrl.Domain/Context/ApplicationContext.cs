@@ -12,6 +12,7 @@ namespace ShortUrl.Domain.Context
         }
 
         public DbSet<Item> Items { get; set; }
+        public DbSet<Statistic> Statistics { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,6 +28,20 @@ namespace ShortUrl.Domain.Context
                 entity.Property(x => x.IpAddress).HasMaxLength(50).IsUnicode(false).IsRequired();
                 entity.Property(x => x.Segment).HasMaxLength(50).IsUnicode(false).IsRequired();
             });
+
+            modelBuilder.Entity<Statistic>(entity =>
+            {
+                // Base
+                entity.Property(x => x.Id).ValueGeneratedNever();
+                entity.Property(x => x.CreatedDate).HasColumnType("datetimeoffset").HasMaxLength(7);
+
+                // Specific
+                entity.Property(x => x.ItemId).IsRequired();
+                entity.Property(x => x.IpAddress).HasMaxLength(50).IsUnicode(false).IsRequired();
+            });
+
+            // unique constraint for Segment on "Item"
+            modelBuilder.Entity<Item>().HasIndex(x => x.Segment).IsUnique();
 
             // This will singularize all table names
             foreach (IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
