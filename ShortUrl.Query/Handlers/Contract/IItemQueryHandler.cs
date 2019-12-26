@@ -5,7 +5,7 @@ namespace ShortUrl.Query.Handlers.Contract
 {
     public interface IItemQueryHandler
     {
-        Task<Item> GetBySegmentAsync(string originUrl);
-        Task<Item> GetByOriginUrlAsync(string segment);
+        Task<Item> GetByOriginUrlAsync(string originUrl);
+        Task<Item> GetBySegmentAsync(string segment);
     }
 }

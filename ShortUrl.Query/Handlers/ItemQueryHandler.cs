@@ -21,7 +21,7 @@ namespace ShortUrl.Query.Handlers
         #endregion
 
         #region Member of IItemQueryHandler
-        public async Task<Item> GetBySegmentAsync(string originUrl)
+        public async Task<Item> GetByOriginUrlAsync(string originUrl)
         {
             using IDbConnection connection = await _connectionFactory.GetConnectionAsync();
             DynamicParameters parameters = new DynamicParameters();
@@ -32,7 +32,7 @@ namespace ShortUrl.Query.Handlers
                 .ConfigureAwait(false);
         }
 
-        public async Task<Item> GetByOriginUrlAsync(string segment)
+        public async Task<Item> GetBySegmentAsync(string segment)
         {
             using IDbConnection connection = await _connectionFactory.GetConnectionAsync();
             DynamicParameters parameters = new DynamicParameters();

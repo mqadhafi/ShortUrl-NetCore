@@ -49,7 +49,7 @@ namespace ShortUrl.Business
                     return response;
                 }
 
-                Item entity = await _itemQueryHandler.GetBySegmentAsync(model.OriginUrl);
+                Item entity = await _itemQueryHandler.GetByOriginUrlAsync(model.OriginUrl);
                 string segment = entity?.Segment;
 
                 if (string.IsNullOrWhiteSpace(segment))
@@ -82,7 +82,7 @@ namespace ShortUrl.Business
             var response = new RedirectResponse();
             try
             {
-                Item entity = await _itemQueryHandler.GetByOriginUrlAsync(model.Segment);
+                Item entity = await _itemQueryHandler.GetBySegmentAsync(model.Segment);
 
                 if (entity != null && !string.IsNullOrWhiteSpace(entity.OriginUrl))
                 {
